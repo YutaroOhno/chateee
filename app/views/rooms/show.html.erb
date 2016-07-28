@@ -40,7 +40,7 @@
 <script>
   var group_id = <%= @room.id %>;
 
-  var dispatcher = new WebSocketRails("localhost:3000/websocket");
+  var dispatcher = new WebSocketRails("https://chateee.herokuapp.com/websocket");
 var postsChannel = dispatcher.subscribe(group_id);
 
 
