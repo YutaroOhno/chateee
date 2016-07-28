@@ -181,7 +181,7 @@ border-radius: 50%;
 }
 
 .top{
-  padding-top: 90px;
+  padding-top: 100px;
 }
 #top{
   background: rgba(45,45,45, 0.5);
@@ -246,3 +246,20 @@ border-radius: 50%;
 .user_name{
   margin-left: 25px;
 }
+
+
+    .thumbnail {
+      width: 125px;
+      height: 83px;
+      opacity: 0.5;
+      cursor: pointer;
+    }
+    .current {
+      opacity: 1.0;
+    }
+    .thumbnail + .thumbnail {
+      margin-left: 4px;
+    }
+    #main img {
+      width: 513px;
+    }
