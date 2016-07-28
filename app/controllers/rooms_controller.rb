@@ -12,7 +12,6 @@ class RoomsController < ApplicationController
   end
 
   def show
-    binding.pry
     @room = Room.find(params[:id])
     @user = User.find(params[:user_id])
     @room.user_count += 1
@@ -43,6 +42,6 @@ class RoomsController < ApplicationController
 private
 
   def create_params
-    params.require(:room).permit(:name)
+    params.require(:room).permit(:name, :room_image)
   end
 end

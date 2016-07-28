@@ -17,7 +17,7 @@
     </div>
     </div>
 
-    <div id="chat_room", class="room_color", style="background-image: image-url('<%= @room.image %>')">
+    <div id="chat_room", class="room_color", style="background-image: url('<%= @room.room_image %>')">
       <div class="room_color"></div>
   <!-- チャット表示部分 -->
       <div class="container">
@@ -40,7 +40,7 @@
 <script>
   var group_id = <%= @room.id %>;
 
-  var dispatcher = new WebSocketRails("https://chateee.herokuapp.com/websocket");
+  var dispatcher = new WebSocketRails("localhost:3000/websocket");
 var postsChannel = dispatcher.subscribe(group_id);
 
 
