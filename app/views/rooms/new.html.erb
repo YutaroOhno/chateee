@@ -3,7 +3,7 @@
     <%= form_for(@room) do |f| %>
     <center><%= f.label :room %></center>
     <center> <%= f.text_field :name, placeholder: "部屋の名前",  autofocus: true, class: "nickname" %></center>
-    <%= f.hidden_field :room_image %>
+    <div class="row">
     <div class="col-sm-2"></div>
     <div class="col-sm-4">
       <img id="new_room_image">
@@ -17,7 +17,8 @@
     </div class="col-sm-2"><div>
     <% end %>
 </div>
-
+</div>
+<%= f.hidden_field :room_image %>
 <%= f.hidden_field :user_id, :value => "#{@user.id}" %>
   <div><center><%= f.submit value: "部屋作成" %></center></div>
-      <% end %>
+<% end %>
