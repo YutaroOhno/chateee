@@ -13,9 +13,9 @@
       <br>
       <% @room_images.each do |room| %>
       <%= image_tag(room.image, class: "room_thumbnail") %>
+      <% end %>
     </div>
     </div class="col-sm-2"><div>
-    <% end %>
 </div>
 </div>
 <%= f.hidden_field :room_image %>
