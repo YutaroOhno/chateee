@@ -52,3 +52,6 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'masonry-rails'
 gem 'jquery-turbolinks'
+group :production, :staging do
+  gem 'rails_12factor'
+end
