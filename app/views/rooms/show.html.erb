@@ -1,0 +1,73 @@
+<div class="top", id="top">
+  <div class="container">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+    <div class="form-group">
+    <label for="introduction" class="control-label"><%= @room.name %></label>
+      <textarea id="comment" cols="45" rows="4"
+        placeholder="チャットしましょう" class="form-control"></textarea>
+    </div>
+    <div class="col-sm-2"></div>
+
+  <button id="send" type="submit" class="btn btn-primary btn-lg">送信</button>
+  <%= link_to '退出する', controller: "rooms", action: "back_room", room_id: "#{@room.id}", user_id: "#{@user.id}" %>
+    </div>
+    <div class="col-sm-2"></div>
+    </div>
+    </div>
+
+    <div id="chat_room", class="room_color", style="background-image:url('<%= @room.image %>')">
+      <div class="room_color"></div>
+  <!-- チャット表示部分 -->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2"></div>
+          <div id="user_image" class="col-sm-2">
+          </div>
+          <div class="col-sm-6">
+            <div id="chat_area">
+            </div>
+          </div>
+          </div>
+          <div class="col-sm-2"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+  var group_id = <%= @room.id %>;
+
+  var dispatcher = new WebSocketRails("localhost:3000/websocket");
+var postsChannel = dispatcher.subscribe(group_id);
+
+
+  // メッセージ受信時の処理
+postsChannel.bind('websocket_chat', function(message){
+
+    var message_li = document.createElement("div");
+
+var image = document.createElement("img");
+var icon = image.setAttribute('src', message[3]);
+
+var user_nickname = document.createElement("p")
+    user_nickname.textContent = message[4]
+    message_li.textContent = message[0];
+
+     document.getElementById("user_image").appendChild(image).classList.add('user_thumbnail');
+     document.getElementById("user_image").appendChild(user_nickname).classList.add('user_name');
+     document.getElementById("chat_area").appendChild(message_li).classList.add('balloon')
+  });
+ // メッセージ送信時の処理
+document.getElementById("send").onclick =  function(){
+  var comment = document.getElementById("comment").value;
+  var nickname = '<%= @user.nickname %>';
+  var user_image = '<%= @user.image %>';
+  var image = document.createElement("img");
+  var icon = image.setAttribute('src', user_image);
+  var user_id = <%= @user.id %>
+  dispatcher.trigger("websocket_chat", [comment,group_id,user_id]);
+  }
+</script>

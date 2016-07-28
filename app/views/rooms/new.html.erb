@@ -1,0 +1,21 @@
+<div class="profile">
+  <center><h2>部屋の作成</h2></center>
+ <%= form_for(@room) do |f| %>
+ <center><%= f.label :room %></center>
+ <center> <%= f.text_field :name, placeholder: "部屋の名前",  autofocus: true, class: "nickname" %></center>
+      <%= f.hidden_field :room_image %>
+
+      <img id="new_room_image">
+
+     <div class="col-sm-4">
+      部屋の画像をお選びください
+      <br>
+        <% @room_images.each do |room| %>
+        <%= image_tag(room.image, class: "room_thumbnail") %>
+        <% end %>
+
+
+</div>
+<%= f.hidden_field :user_id, :value => "#{@user.id}" %>
+<center><%= f.submit value: "部屋作成" %></center>
+      <% end %>

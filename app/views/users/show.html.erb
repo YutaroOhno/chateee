@@ -1,0 +1,74 @@
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="rooms_layout">
+
+<!-- <div id="new_maked_room">
+<section class="item row">
+  <a href="">
+    <img class="image" src="">
+    <div class="category" id="maked_room"></div>
+    <p class="description">新しい部屋！</p>
+  </a>
+  </section>
+  </div> -->
+
+
+<% @rooms.each do |room| %>
+  <% if room.user_count <= 2 %>
+  <section class="item row">
+  <%= link_to ({ :controller => :rooms, :action => :show, :id => room.id, :user_id => @user.id }) do %>
+      <%= image_tag(room.image, class: "image") %>
+      <div class="category"><%= room.name %></div>
+      <p class="description">
+      <% room.users.each do |user| %>
+        <%= image_tag(user.image, class: "room-user-thumbnail") %>
+      <% end %>
+      </p>
+    <% end %>
+    </section>
+
+  <% elsif room.user_count >= 3 && room.user_count <= 5 %>
+  <section class="item medium middle">
+  <%= link_to ({ :controller => :rooms, :action => :show, :id => room.id, :user_id => @user.id }) do %>
+      <%= image_tag(room.image, class: "image") %>
+      <div class="category"><%= room.name %></div>
+      <p class="description">説明</p>
+    <% end %>
+  </section>
+
+  <% else %>
+  <section class="item large high">
+  <%= link_to ({ :controller => :rooms, :action => :show, :id => room.id, :user_id => @user.id }) do %>
+      <%= image_tag(room.image, class: "image") %>
+      <div class="category"><%= room.name %></div>
+      <p class="description">説明</p>
+    <% end %>
+  </section>
+
+  <% end %>
+
+
+<% end %>
+
+</div>
+
+
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.0/masonry.pkgd.js"></script>
+<script>
+new Masonry('.rooms_layout', {
+  itemSelector: '.item',
+  columWidth: 180,
+  gutter: 4
+});
+</script>
+
+

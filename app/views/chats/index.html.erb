@@ -1,0 +1,58 @@
+<div>
+<%= button_to("ログアウト", destroy_user_session_path, method: :delete) %>
+</div>
+
+部屋の名前
+<%= @room.name %>
+
+<!-- チャット表示部分 -->
+
+<%= link_to "退出", back_room_chats_path(@room.id) %>
+<ul id="chat_area">
+
+</ul>
+
+
+
+<!-- コメントフォーム -->
+
+<input id="comment" type="text">
+
+<input id="send" type="button" value="send">
+
+<script>
+var str = Math.random().toString(36).slice(-8);
+  var group_id = <%= @channel_id %>;
+  var dispatcher = new WebSocketRails("localhost:3000/websocket");
+
+var postsChannel = dispatcher.subscribe(group_id);
+
+
+  // メッセージ受信時の処理
+
+postsChannel.bind('websocket_chat', function(message){
+
+    var message_li = document.createElement("li");
+
+    message_li.textContent = message[0] + ":" + message[1][0];
+
+
+    document.getElementById("chat_area").appendChild(message_li);
+
+  });
+
+
+
+  // メッセージ送信時の処理
+
+  document.getElementById("send").onclick =  function(){
+
+  var comment = document.getElementById("comment").value;
+
+// var channel = <%= @channel_id %>;
+var array = [comment, group_id];
+dispatcher.trigger('websocket_chat', array);
+
+};
+
+</script>

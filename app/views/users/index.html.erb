@@ -1,0 +1,54 @@
+
+<br>
+<br>
+<br>
+
+
+
+
+
+  <center><h2>らくちゃとは</h2></center>
+<div class="container">
+<div class="row">
+<div class="col-sm-3"></div>
+<div class="col-sm-6">
+
+楽にチャットを行うことができるサービスです。面倒なユーザー登録なんかは入りません。まずは、プロフィールを選択してみましょう。
+</div>
+<div class="col-sm-3"></div>
+
+
+  </div>
+  </div>
+
+
+<div class=" container profile">
+<center><h2>プロフィール登録</h2></center>
+ <%= form_for(@user) do |f| %>
+ <center><%= f.label :nickname %></center>
+ <center> <%= f.text_field :nickname, placeholder: "nickname",  autofocus: true, class: "nickname" %></center>
+ <%= f.hidden_field :image %>
+  <div class="col-sm-2"></div>
+  <div class="col-sm-4">
+      <img id="main_image">
+    </div>
+     <div class="col-sm-4">
+      プロフィール画像をお選びください
+      <br>
+        <%  @images.each do |image|%>
+        <%= image_tag(image.image,  class: "thumbnail") %>
+        <% end %>
+      <div id="thumbnails">
+      </div>
+      <div id="main">
+      </div>
+      </div>
+        </div class="col-sm-2"><div>
+  </div>
+<div><center><%= f.submit value: "チャットへ進む" %></center></div>
+  <% end %>
+
+
+
+
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chattest</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+    <header class="header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <h1 class="col-sm-4"><a href="/">らくちゃ</a></h1>
+        <div class="col-sm-4"></div>
+          <% unless @user.nickname.blank? %>
+            <div class="col-sm-2">
+            <br>
+            <%= image_tag(@user.image, class: "top-thumbnail") %>
+              <span><%= @user.nickname %></span><br>
+              <span><%= link_to "部屋を作る", new_room_path(@user.id) %></span>
+            </div>
+
+          <% else %>
+            </div>
+          <% end %>
+          <div class="col-sm-1"></div>
+      </div>
+    </div>
+    </header>
+
+
+<%= yield %>
+
+
+</body>
+</html>

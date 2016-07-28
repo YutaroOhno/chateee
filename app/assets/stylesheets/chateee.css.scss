@@ -1,0 +1,248 @@
+/* -- import Roboto Font ------------------------------ */
+@import "//fonts.googleapis.com/css?family=Lato:300,400,700";
+
+
+
+/* -- application -- */
+
+html{
+  height: 100%;
+}
+
+body{
+  height: 100%;
+}
+
+header {
+  border-bottom: 1px solid $gray;
+  background-color: #fff;
+  position: fixed;
+  width: 100%;
+  }
+
+.header-left{
+  float:left;
+}
+
+.header_right{
+  float:right;
+}
+
+
+
+.top-thumbnail{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+
+/* -- users -- */
+.thumbnail{
+width: 100px;
+height: 100px;
+border-radius: 50px;
+opacity: 0.5;
+display: inline;
+}
+
+.profile{
+margin: 0 auto;
+}
+
+.left{
+  float: left;
+  width: 400px;
+  margin: 0 0 0 100px;
+}
+
+.right{
+float: right;
+ width: 400px
+}
+
+#main_image{
+background-image: image-url("profile.png");
+background-size: contain;
+width: 250px;
+height: 250px;
+border-radius: 50%;
+}
+
+.nickname{
+    border: 0;
+    width: 60%;
+    line-height: 3;
+    transition: all .15s ease-in-out; 
+    -o-transition: all .15s ease-in-out; 
+    -moz-transition: all .15s ease-in-out; 
+    -webkit-transition: all .15s ease-in-out;
+    background-color: transparent;
+    margin-bottom: 20px;
+}
+
+/* -- rooms -- */
+
+.item{
+  width: 180px;
+  margin-bottom: 4px;
+  padding: 8px;
+  border-bottom: 3px solid;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.item .image{
+  display: block;
+  width: 100%;
+}
+
+.item .category{
+  margin: 15px 9px 10px;
+  color: #aaa;
+  letter-spacing: 1px;
+}
+
+
+
+.item .category::before{
+  content: '';
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  margin-right: 5px;
+  border: 2px solid;
+  border-radius: 50%;
+  vartical-align: -5px;
+}
+
+.middle .category::before{
+  border-color:blue;
+}
+.row .category::before{
+  border-color:red;
+}
+.high .category::before{
+  border-color:green;
+}
+
+
+.medium{
+  width: 364px;
+}
+
+.large{
+  width: 732px;
+}
+
+
+
+.item .description{
+  margin: 10px;
+  line-height: 1.5px;
+}
+
+.item > a{
+  display:block;
+  margin: -8px -8px -11px;
+  padding: 8px 8px 11px;
+  border-radius: inherit;
+  color: #777;
+  transition: all 0.3s;
+}
+
+.item > a:hover{
+  box-shadow: 0 0 6px -1px rgba(0,0,0,0.3);
+  opacity: 0.8;
+}
+
+
+.room-user-thumbnail{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.room_thumbnail{
+width: 100px;
+height: 100px;
+border-radius: 50px;
+opacity: 0.5;
+display: inline;
+
+}
+
+#new_room_image{
+background-image: image-url("room.jpeg");
+background-size: contain;
+width: 200px;
+height: 200px;
+border-radius: 50%;
+}
+
+.top{
+  padding-top: 90px;
+}
+#top{
+  background: rgba(45,45,45, 0.5);
+
+}
+#chat_room{
+  min-height: 600px;;
+}
+
+
+.balloon{
+  color: #19283C;
+  position: relative;
+  padding: 0 15px;
+  width: auto;
+  min-width: 115px;
+  height: 80px;
+  line-height: 32px;
+  text-align: center;
+  background: #F6F6F6;
+  border: 3px solid #19283C;
+  z-index: 0;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+.balloon::before{
+  content: "";
+  position: absolute;
+  top: -8px; left: 50%;
+  margin-left: -9px;
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 0 9px 9px 9px;
+  border-color: transparent transparent #F6F6F6 transparent;
+  z-index: 0;
+}
+.balloon::after{
+  content: "";
+  position: absolute;
+  top: -12px; left: 50%;
+  margin-left: -10px;
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent #19283C transparent;
+  z-index: -1;
+}
+
+.user_thumbnail{
+  height:80px;
+  width: 80px;
+  border-radius: 50%;
+}
+#comment{
+  font-size: 20px;
+}
+
+.user_name{
+  margin-left: 25px;
+}
