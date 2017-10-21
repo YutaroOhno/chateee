@@ -39,26 +39,21 @@
 
 <script>
   var group_id = <%= @room.id %>;
-
   var dispatcher = new WebSocketRails("localhost:3000/websocket");
-var postsChannel = dispatcher.subscribe(group_id);
-
+  var postsChannel = dispatcher.subscribe(group_id);
 
   // メッセージ受信時の処理
-postsChannel.bind('websocket_chat', function(message){
-
+  postsChannel.bind('websocket_chat', function(message){
     var message_li = document.createElement("div");
+    var image = document.createElement("img");
+    var icon = image.setAttribute('src', message[3]);
+    var user_nickname = document.createElement("p")
+        user_nickname.textContent = message[4]
+        message_li.textContent = message[0];
 
-var image = document.createElement("img");
-var icon = image.setAttribute('src', message[3]);
-
-var user_nickname = document.createElement("p")
-    user_nickname.textContent = message[4]
-    message_li.textContent = message[0];
-
-     document.getElementById("user_image").appendChild(image).classList.add('user_thumbnail');
-     document.getElementById("user_image").appendChild(user_nickname).classList.add('user_name');
-     document.getElementById("chat_area").appendChild(message_li).classList.add('balloon')
+    document.getElementById("user_image").appendChild(image).classList.add('user_thumbnail');
+    document.getElementById("user_image").appendChild(user_nickname).classList.add('user_name');
+    document.getElementById("chat_area").appendChild(message_li).classList.add('balloon')
   });
  // メッセージ送信時の処理
 document.getElementById("send").onclick =  function(){
