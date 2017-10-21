@@ -4,19 +4,19 @@
     <center><%= f.label :room %></center>
     <center> <%= f.text_field :name, placeholder: "部屋の名前",  autofocus: true, class: "nickname" %></center>
     <div class="row">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-4">
-      <img id="new_room_image">
-    </div>
-     <div class="col-sm-4">
-      部屋の画像をお選びください
-      <br>
-      <% @room_images.each do |room| %>
-      <%= image_tag(room.image, class: "room_thumbnail") %>
-      <% end %>
-    </div>
-    </div class="col-sm-2"><div>
-</div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-4">
+        <img id="new_room_image">
+      </div>
+      <div class="col-sm-4">
+        部屋の画像をお選びください
+        <br>
+        <% @room_images.each do |room| %>
+          <%= image_tag(room.image, class: "room_thumbnail") %>
+        <% end %>
+      </div>
+      </div class="col-sm-2"><div>
+  </div>
 </div>
 <%= f.hidden_field :room_image %>
 <%= f.hidden_field :user_id, :value => "#{@user.id}" %>
