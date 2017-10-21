@@ -9,7 +9,6 @@ class RoomsController < ApplicationController
   end
 
   def show
-    binding.pry
     @room = Room.find(params[:id])
     @user.room_id = @room.id
     @user.save
